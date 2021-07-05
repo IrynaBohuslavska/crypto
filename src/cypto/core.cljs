@@ -24,13 +24,7 @@
   (re-frame/dispatch-sync [::events/initialize-db])
   (dev-setup)
   (mount-root)
-
-  ;; (let
-  ;;  data (re-frame/subscribe [::subs/data])
-
-  ;;  (go-loop [second 1]
-  ;;    (<! (timeout 15000))
-  ;;    (re-frame/dispatch [@data])
-  ;;    (recur (+ second 0))))
-  
-  )
+  (go-loop [second 1]
+    (<! (timeout 15000))
+    (re-frame/dispatch [::events/fetch])
+    (recur (+ second 15))))

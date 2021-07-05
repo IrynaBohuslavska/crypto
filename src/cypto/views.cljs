@@ -21,10 +21,6 @@
       "Hello from " @name]
      [:button {:class "btn btn-primary container"
                :on-click #(re-frame/dispatch [::events/fetch])} "Make API Call"]
-     [:button {:class "btn btn-primary container"
-               :on-click #(re-frame/dispatch [::events/update-name (if (= @name (str "re-frame"))
-                                                                     (str "second name")
-                                                                     (str "re-frame"))])} "Show another name"]
      [:table {:class "table"}
       [:thead 
        [:th {:scope "coll"}
