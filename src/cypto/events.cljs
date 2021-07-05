@@ -5,9 +5,7 @@
    [ajax.core :as ajax]
    [day8.re-frame.http-fx]
    [day8.re-frame.tracing :refer-macros [fn-traced]]
-   [clojure.core.async :refer [go-loop]]
-   [clojure.core.async :refer [timeout]]
-   [clojure.core.async :refer [<!]]))
+   [clojure.core.async :refer [go-loop timeout <!]]))
 
 (re-frame/reg-event-db
  ::initialize-db
@@ -37,13 +35,3 @@
  (fn
    [db [_ response]]
    (assoc db :data (js->clj response))))
-
-
-;; (re-frame/reg-event-db
-;;  ::fetch-success
-;;  (fn
-;;    [db [_ response]]
-;;    (go-loop []
-;;      (<! (timeout 15000))
-;;      (assoc db :data (js->clj response))
-;;      (recur))))

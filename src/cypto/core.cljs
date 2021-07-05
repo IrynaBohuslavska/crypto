@@ -4,7 +4,9 @@
    [re-frame.core :as re-frame]
    [cypto.events :as events]
    [cypto.views :as views]
+   [cypto.subs :as subs]
    [cypto.config :as config]
+   [clojure.core.async :refer [go-loop timeout <!]]
    ))
 
 
@@ -21,4 +23,14 @@
 (defn init []
   (re-frame/dispatch-sync [::events/initialize-db])
   (dev-setup)
-  (mount-root))
+  (mount-root)
+
+  ;; (let
+  ;;  data (re-frame/subscribe [::subs/data])
+
+  ;;  (go-loop [second 1]
+  ;;    (<! (timeout 15000))
+  ;;    (re-frame/dispatch [@data])
+  ;;    (recur (+ second 0))))
+  
+  )
